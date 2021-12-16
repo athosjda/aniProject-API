@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Anime.Models
 {
@@ -13,6 +14,8 @@ namespace Anime.Models
         public int Episodes { get; set; }
         public double Score { get; set; }
         public string Synopsis { get; set; }
+        [ForeignKey(nameof(AiredId))]
         public int AiredId { get; set; }
+        public AiredTable AiredTable { get; set; }
     }
 }
