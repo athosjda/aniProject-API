@@ -2,7 +2,7 @@
 
 namespace Anime.Models
 {
-    public class Genres
+    public class GenreTable
     {
         [Key]
         public int Id { get; set; }

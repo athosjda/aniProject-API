@@ -63,6 +63,20 @@ namespace Anime.Migrations
 
                     b.ToTable("Animes");
                 });
+
+            modelBuilder.Entity("Anime.Models.GenreTable", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Genres");
+                });
 #pragma warning restore 612, 618
         }
     }

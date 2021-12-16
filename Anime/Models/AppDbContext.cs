@@ -10,5 +10,6 @@ namespace Anime.Models
 
         public DbSet<AnimeTable> Animes { get; set; }
         public DbSet<AiredTable> Aired { get; set; }
+        public DbSet<GenreTable> Genres { get; set; }
     }
 }
