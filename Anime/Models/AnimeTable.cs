@@ -14,8 +14,8 @@ namespace Anime.Models
         public int Episodes { get; set; }
         public double Score { get; set; }
         public string Synopsis { get; set; }
-        [ForeignKey(nameof(AiredId))]
+        /* [ForeignKey(nameof(AiredId))]
         public int AiredId { get; set; }
-        public AiredTable AiredTable { get; set; }
+        public AiredTable AiredTable { get; set; }//*/
     }
 }

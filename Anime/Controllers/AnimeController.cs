@@ -16,7 +16,7 @@ namespace Anime.Controllers
         }
 
         [HttpGet]
-        public List<AnimeTable> Get()
+        public List<AnimeTable> GetAll()
         {
             return _db.Animes
                 .OrderByDescending(animes => animes.Score)
@@ -26,9 +26,10 @@ namespace Anime.Controllers
         [HttpGet("{id}")]
         public ActionResult<AnimeTable> Get(int id)
         {
-            return _db.Animes
+            AnimeTable anime = _db.Animes
                 .Where(anime => anime.MalId == id)
                 .FirstOrDefault();
+            return anime.MalId == id ? anime : null;
         }
 
         [HttpPost]
@@ -39,16 +40,28 @@ namespace Anime.Controllers
             _db.SaveChanges();
         }
 
+        [HttpPut]
+        public void Update(AnimeTable anime)
+        {
+            if (anime != null)
+            {
+                _db.Animes.Update(anime);
+                _db.SaveChanges(true);
+            }
+        }
+
         [HttpDelete]
-        public void Destroy(int id)
+        public void Delete(int id)
         {
             AnimeTable anime = _db.Animes
                 .Where(anime => anime.MalId == id)
                 .FirstOrDefault();
-            
-            _db.Animes.Remove(anime);
-            
-            _db.SaveChanges();
+
+            if (anime.MalId == id)
+            {
+                _db.Animes.Remove(anime);
+                _db.SaveChanges(true);
+            }
         }
     }
 }
