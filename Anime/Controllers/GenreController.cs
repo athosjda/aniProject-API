@@ -24,7 +24,9 @@ namespace Anime.Controllers
         [HttpGet("{id}")]
         public ActionResult<GenreTable> Get(int id)
         {
-            return _db.Genres.Where(genre => genre.Id == id).FirstOrDefault();
+            return _db.Genres
+                .Where(g => g.Id == id)
+                .FirstOrDefault();
         }
 
         [HttpPost]

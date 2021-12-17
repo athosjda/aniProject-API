@@ -26,7 +26,7 @@ namespace Anime.Controllers
         public ActionResult<AiredTable> Get(int id)
         {
             return _db.Aired
-                .Where(aired => aired.AiredId == id)
+                .Where(a => a.AiredId == id)
                 .FirstOrDefault();
         }
 
@@ -40,7 +40,7 @@ namespace Anime.Controllers
         [HttpDelete]
         public void Delete(int id)
         {
-            AiredTable aired = _db.Aired.Where(aired => aired.AiredId == id).FirstOrDefault();
+            AiredTable aired = _db.Aired.Where(a => a.AiredId == id).FirstOrDefault();
             if(aired.AiredId == id)
             {
                 _db.Aired.Remove(aired);
